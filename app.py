@@ -1,10 +1,15 @@
+import os
 from flask import Flask, request, jsonify
 #from flask_wtf.csrf import CSRFProtect
 from groq import Groq
+from dotenv import load_dotenv
+load_dotenv()
+
+groq_api_key = os.getenv("GROQ_API_KEY")
 
 app = Flask(__name__)
 #csrf = CSRFProtect(app)
-groq = Groq(api_key="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")
+groq = Groq(api_key=groq_api_key)
 
 
 @app.route('/')
